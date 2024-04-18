@@ -20,7 +20,7 @@ const light = new THREE.DirectionalLight(0xffffff, 1);
 light.position.set(5, 5, 5);
 light.castShadow = true;
 scene.add(light);
-scene.add(new THREE.AmbientLight(0xffffff, 0.2));
+scene.add(new THREE.AmbientLight(0xffffff, 0.6));
 
 // Controls
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -47,12 +47,19 @@ const cubes = {
     bish: new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ map: cubeTextures.bish }))
 };
 
+cubes.up.userData = { url: "https://fishbugband.bandcamp.com/album/up-and-out"};
+cubes.inch.userData = { url: "https://fishbugband.bandcamp.com/album/inchworm"};
+cubes.funky.userData = { url: "https://open.spotify.com/album/6ektRFcp5txNNDYsgmCqo1?si=1aW6SDtGQCmiJqzLOeSc4w"};
+cubes.bish.userData = { url: "https://open.spotify.com/album/3SFPeLHVyIFjeXxrU7SOIi?si=8SVHdJrpSI2FAGDnGlmUPQ"};
+
+
 cubes.up.position.set(-2, 2, 0);
 cubes.funky.position.set(2, 2, 0);
 cubes.inch.position.set(0, -2, 0);
 cubes.bish.position.set(0, 0, 2);
 
 Object.values(cubes).forEach(cube => {
+    
     scene.add(cube);
 });
 
@@ -115,8 +122,12 @@ function onMouseClick(event) {
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects(clickableObjects);
     if (intersects.length > 0) {
-        console.log('Object clicked:', intersects[0].object);
-        scene.remove(intersects[0].object);
+        let object = intersects[0].object
+        console.log('Object clicked:', object);
+        if (object.userData && object.userData.url) {
+            window.location.href = object.userData.url;
+        }
+        //scene.remove(object);
     }
 }
 
