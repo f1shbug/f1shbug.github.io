@@ -115,7 +115,16 @@ function onWindowResize() {
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 window.addEventListener('click', onMouseClick, false);
+window.addEventListener('touchstart', onMouseClick, false);
+
 function onMouseClick(event) {
+    let clientX = event.clientX;
+    let clientY = event.clientY;
+    // Adjust for touch events
+    if (event.touches) {
+        clientX = event.touches[0].clientX;
+        clientY = event.touches[0].clientY;
+    }
     event.preventDefault();
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
