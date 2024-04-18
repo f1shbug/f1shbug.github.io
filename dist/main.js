@@ -2,10 +2,10 @@ import * as THREE from "https://unpkg.com/three@0.127.0/build/three.module.js";
 import { OrbitControls } from 'https://unpkg.com/three@0.127.0/examples/jsm/controls/OrbitControls.js';
 let clickableObjects = [];
 
-const imageUrl_Funky = 'textures/fishbug.jpg'; 
-const imageUrl_inch = 'textures/inchworm.jpg'; 
-const imageUrl_bish = 'textures/bishfug.jpg'; 
-const imageUrl_up =  'textures/up&out.jpg';
+const imageUrl_Funky = 'fishbug.jpg'; 
+const imageUrl_inch = 'inchworm.jpg'; 
+const imageUrl_bish = 'bishfug.jpg'; 
+const imageUrl_up =  'up&out.jpg';
 const textureloader = new THREE.TextureLoader();
 const funky_cubetexture = textureloader.load(imageUrl_Funky);
 const inch_cubetexture = textureloader.load(imageUrl_inch);
