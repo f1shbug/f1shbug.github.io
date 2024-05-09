@@ -35,7 +35,8 @@ const cubeTextures = {
     funky: textureLoader.load('parker.JPG'),
     inch: textureLoader.load('poster.jpg'),
     bish: textureLoader.load('cheeseboiz.jpg'),
-    up: textureLoader.load('Cheese dream.jpg')
+    up: textureLoader.load('Cheese dream.jpg'),
+    pm: textureLoader.load('pandm.jpg')
 };
 
 const sphereTextures = {
@@ -48,7 +49,8 @@ const cubes = {
     up: new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ map: cubeTextures.up })),
     funky: new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ map: cubeTextures.funky })),
     inch: new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ map: cubeTextures.inch })),
-    bish: new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ map: cubeTextures.bish }))
+    bish: new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ map: cubeTextures.bish })),
+    pm: new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ map: cubeTextures.pm }))
 };
 
 const sphere_geometry = new THREE.SphereGeometry(50, 32, 32);
@@ -70,6 +72,7 @@ cubes.up.position.set(-2, 2, 0);
 cubes.funky.position.set(2, 2, 0);
 cubes.inch.position.set(0, -2, 0);
 cubes.bish.position.set(0, 0, 2);
+cubes.pm.position.set(0, 2, 2);
 
 Object.values(cubes).forEach(cube => {
     scene.add(cube);
