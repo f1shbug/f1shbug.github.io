@@ -32,12 +32,16 @@ controls.update();
 // Textures
 const textureLoader = new THREE.TextureLoader();
 const cubeTextures = {
-    funky: textureLoader.load('fishbug.jpg'),
-    inch: textureLoader.load('inchworm.jpg'),
-    bish: textureLoader.load('bishfug.jpg'),
-    up: textureLoader.load('up&out.jpg')
+    funky: textureLoader.load('parker.JPG'),
+    inch: textureLoader.load('poster.jpg'),
+    bish: textureLoader.load('cheeseboiz.jpg'),
+    up: textureLoader.load('Cheese dream.jpg')
 };
 
+const sphereTextures = {
+    stella: textureLoader.load('stella.png'),
+    parker: textureLoader.load('parker.JPG'),
+};
 // Cubes
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 const cubes = {
@@ -47,20 +51,32 @@ const cubes = {
     bish: new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ map: cubeTextures.bish }))
 };
 
+const sphere_geometry = new THREE.SphereGeometry(50, 32, 32);
+const spheres = {
+    stella: new THREE.Mesh(sphere_geometry, new THREE.MeshStandardMaterial({ map: sphereTextures.stella })),
+    parker: new THREE.Mesh(sphere_geometry, new THREE.MeshStandardMaterial({ map: sphereTextures.parker }))
+};
+
 cubes.up.userData = { url: "https://fishbugband.bandcamp.com/album/up-and-out"};
 cubes.inch.userData = { url: "https://fishbugband.bandcamp.com/album/inchworm"};
 cubes.funky.userData = { url: "https://open.spotify.com/album/6ektRFcp5txNNDYsgmCqo1?si=1aW6SDtGQCmiJqzLOeSc4w"};
 cubes.bish.userData = { url: "https://open.spotify.com/album/3SFPeLHVyIFjeXxrU7SOIi?si=8SVHdJrpSI2FAGDnGlmUPQ"};
 
-
+spheres.stella.position.set(-250, 50, 20);
+spheres.parker.position.set(25, 100, 200);
+spheres.parker.rotation.x = 16
+spheres.parker.rotation.x = 3
 cubes.up.position.set(-2, 2, 0);
 cubes.funky.position.set(2, 2, 0);
 cubes.inch.position.set(0, -2, 0);
 cubes.bish.position.set(0, 0, 2);
 
 Object.values(cubes).forEach(cube => {
-    
     scene.add(cube);
+});
+
+Object.values(spheres).forEach(sphere => {
+    scene.add(sphere);
 });
 
 const clickableObjects = Object.values(cubes);
@@ -131,11 +147,11 @@ function onMouseClick(event) {
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects(clickableObjects);
     if (intersects.length > 0) {
-        let object = intersects[0].object
-        console.log('Object clicked:', object);
-        if (object.userData && object.userData.url) {
-            window.location.href = object.userData.url;
-        }
+        // let object = intersects[0].object
+        // console.log('Object clicked:', object);
+        // if (object.userData && object.userData.url) {
+        //     window.location.href = object.userData.url;
+        // }
         //scene.remove(object);
     }
 }
