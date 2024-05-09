@@ -101,7 +101,7 @@ scene.add(gridHelper);
 let color1 = new THREE.Color(0xE2A4C6); // Start color: black
 let color2 = new THREE.Color(0xE7B4C6); // End color: red
 let step = 0;
-let rotationSpeed = 0.01;
+let rotationSpeed = 0.005;
 function animate() {
     requestAnimationFrame(animate);
     controls.update();
